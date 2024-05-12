@@ -1,0 +1,31 @@
+{% include '../partials/head.html' %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+    <div class="container mt-5 mb-5 pb-5">
+        {% if post %}
+            <div class="row">
+                <div class="col col-lg-8 col-md-8 col-sm-12">
+                    <h2>{{ post.title }}</h2>
+                    {% if user.is_superuser %}
+                    <p>
+                        <a href="{% url 'democrud:post.update' post.id %}" class="btn btn-primary">Edit</a>
+                        <form method="post" action="{% url 'democrud:post.delete' post.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </p>
+                    {% endif %}
+                    <hr>
+                    <input type="hidden" value="{{ post.content }}" id="post_content">
+                    <article>
+                        {{ post.content }}
+                    </article>
+                </div>
+            </div>
+        {% else %}
+            <p>Post not found</p>
+        {% endif %}
+    </div>
+
+{% include '../partials/foot.html' %}

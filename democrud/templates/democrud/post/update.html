@@ -1,0 +1,12 @@
+{% include '../partials/head.html' %}
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+    <div class="container mt-3 mb-5 pb-5">
+        <h1>Edit Post</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+        </form>
+    </div>
+{% include '../partials/foot.html' %}

@@ -1,0 +1,10 @@
+{% include './partials/head.html' %}
+    <div class="container mt-5 mb-5 pb-5">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+{% include './partials/foot.html' %} 
